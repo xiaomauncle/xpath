@@ -19,7 +19,7 @@ here -->
 
 void main() {
   group('ETree', () {
-    ETree tree;
+    late ETree tree;
 
     setUp(() {
       tree = ETree.fromString(xml);
@@ -39,15 +39,15 @@ void main() {
     });
     test('xpath', () {
       var elements = tree.xpath('/root/b/c/text()');
-      expect(elements.length, equals(1));
-      expect(elements[0].name, 'c');
+      expect(elements?.length, equals(1));
+      expect(elements?[0].name, 'c');
 
       elements = tree.xpath('//*[@id="a"]/b[1]/text()');
-      expect(elements.length, equals(1));
-      expect(elements[0].name, equals('a'));
+      expect(elements?.length, equals(1));
+      expect(elements?[0].name, equals('a'));
 
       elements = tree.xpath('/root//b');
-      expect(elements.length, equals(4));
+      expect(elements?.length, equals(4));
     });
   });
 }
